@@ -16,7 +16,7 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.getUsers();
   }
-
+  // public title:"angular-frontend";
   public getUsers(): void {
     this.userService.getUsers().subscribe(
       (response: User[]) => {
