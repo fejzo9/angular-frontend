@@ -10,6 +10,9 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent implements OnInit{
   public users: User[] = [];
+  // public niz = [1,2,3,4,5,6,7,8];
+     public editUser: User;
+     public deleteUser: User;  
 
   constructor(private userService:UserService){}
 
@@ -27,4 +30,63 @@ export class AppComponent implements OnInit{
       }
     );
   }
+
+  public onOpenModal(user: User | null, mode: string): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if (mode === 'add') {
+      button.setAttribute('data-target', '#addUserModal');
+    }
+    if (mode === 'edit') {
+      button.setAttribute('data-target', '#updateUserModal');
+    }
+    if (mode === 'delete') {
+      button.setAttribute('data-target', '#deleteUserModal');
+    }
+    container?.appendChild(button);
+    button.click();
+  }
+
+  public onAddUser(addForm: NgForm): void {
+    // document.getElementById('add-user-form').click();
+    this.userService.addUser(addForm.value).subscribe(
+      (response: User) => {
+        console.log(response);
+        this.getUsers();
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    );
+  }
+
+  public onUpdateUser(userId: number,user: User): void {
+    this.userService.updateUser(userId,user).subscribe(
+      (response: User) => {
+        console.log(response);
+        this.getUsers();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onDeleteUser(userId: number): void {
+    this.userService.deleteUser(userId).subscribe(
+      (response: void) => {
+        console.log(response);
+        this.getUsers();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
 }

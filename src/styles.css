@@ -18,7 +18,7 @@ body {
         flex-direction: column;
         min-width: 0;
         word-wrap: break-word;
-        background-color: #fff;
+        background-color: rgb(251, 251, 251);
         background-clip: border-box;
         border: 1px solid #eff0f2;
         border-radius: 1rem;
@@ -32,8 +32,8 @@ body {
     }
     .img-thumbnail {
         padding: 0.25rem;
-        background-color: #f1f3f7;
-        border: 1px solid #eff0f2;
+        background-color: #8badef;
+        border: 1px solid #000001;
         border-radius: 0.75rem;
     }
     .avatar-title {
@@ -58,7 +58,7 @@ body {
     }
     .badge-soft-success {
         color: #63ad6f !important;
-        background-color: rgba(99,173,111,.1);
+        background-color: rgba(10, 119, 28, 0.1);
     }
     .mb-0 {
         margin-bottom: 0!important;
@@ -69,9 +69,39 @@ body {
         font-size: 75%;
         font-weight: 500;
         line-height: 1;
-        color: #fff;
+        color: rgb(254, 248, 248);
         text-align: center;
         white-space: nowrap;
         vertical-align: baseline;
         border-radius: 0.75rem;
+    }
+    .btn-primary{
+        background-color: #f56e6e;
+        margin-left: 10px;
+        
+    }
+    .btn-primary:hover{
+        background-color: red;
+    }
+    .btn-soft-primary{
+        background-color: #63ad6f;
+        margin-right: 5px;
+    }
+    .btn-soft-primary:hover{
+        background-color: hsl(130, 93%, 32%);
+        margin-right: 5px;
+    }
+   
+    .add-new{
+        background-color: #074ad1;
+        padding: 10px;
+        margin-left: 10px;
+        border: black;
+        border-width: 10px;
+        border-radius: 20px;
+        color: #eee;
+    }
+    .add-new:hover {
+        background-color: white;
+        color: blue;
     }

@@ -22,7 +22,7 @@ export class UserService {
         return this.http.put<User>(`${this.apiServerUrl}/api/user${userId}`, user);
     }
     
-    public deleteUser(user: User): Observable<void> {
-        return this.http.delete<void>(`${this.apiServerUrl}/api/user/${user}`);
-    }
+    public deleteUser(userId: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiServerUrl}/api/user/${userId}`);
+    } 
 }
