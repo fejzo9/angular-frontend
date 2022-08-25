@@ -11,19 +11,30 @@ import { NgForm } from '@angular/forms';
 export class AppComponent implements OnInit{
   public users: User[] = [];
   // public niz = [1,2,3,4,5,6,7,8];
-     public editUser: User;
-     public deleteUser: User;  
+     public editUser: User={ 
+      id:0,
+      name:"",
+      address:"",
+      urlPicture:""};
+     public deleteUser: User={ 
+      id:0,
+      name:"",
+      address:"",
+      urlPicture:""};
 
   constructor(private userService:UserService){}
 
   ngOnInit() {
     this.getUsers();
+    console.log(this.users);
   }
+  
   // public title:"angular-frontend";
   public getUsers(): void {
     this.userService.getUsers().subscribe(
       (response: User[]) => {
         this.users = response;
+        console.log(this.users);
       }, 
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -41,6 +52,10 @@ export class AppComponent implements OnInit{
       button.setAttribute('data-target', '#addUserModal');
     }
     if (mode === 'edit') {
+      if(user!=null)
+      {this.editUser=user;
+        console.log(this.users);}
+      
       button.setAttribute('data-target', '#updateUserModal');
     }
     if (mode === 'delete') {
