@@ -26,10 +26,8 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.getUsers();
-    console.log(this.users);
   }
   
-  // public title:"angular-frontend";
   public getUsers(): void {
     this.userService.getUsers().subscribe(
       (response: User[]) => {
@@ -53,12 +51,16 @@ export class AppComponent implements OnInit{
     }
     if (mode === 'edit') {
       if(user!=null)
-      {this.editUser=user;
-        console.log(this.users);}
+      {
+        this.editUser=user;
+        console.log(this.users);
+      }
       
       button.setAttribute('data-target', '#updateUserModal');
     }
     if (mode === 'delete') {
+      if(user!=null)
+      this.deleteUser = user;
       button.setAttribute('data-target', '#deleteUserModal');
     }
     container?.appendChild(button);
@@ -66,7 +68,7 @@ export class AppComponent implements OnInit{
   }
 
   public onAddUser(addForm: NgForm): void {
-    // document.getElementById('add-user-form').click();
+    // document.getElementById('add-user-form').click(); k          
     this.userService.addUser(addForm.value).subscribe(
       (response: User) => {
         console.log(response);
@@ -80,7 +82,7 @@ export class AppComponent implements OnInit{
     );
   }
 
-  public onUpdateUser(userId: number,user: User): void {
+  public onUpdateUser(userId:number, user: User): void {
     this.userService.updateUser(userId,user).subscribe(
       (response: User) => {
         console.log(response);
