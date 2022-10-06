@@ -19,10 +19,10 @@ export class UserService {
     }
     
     public updateUser(userId: number,user: User): Observable<User> {
-        return this.http.put<User>(`${this.apiServerUrl}/api/user${userId}`, user);
+        return this.http.put<User>(`${this.apiServerUrl}/api/user/${userId}`, user);
     }
     
-    public deleteUser(user: User): Observable<void> {
-        return this.http.delete<void>(`${this.apiServerUrl}/api/user/${user}`);
-    }
+    public deleteUser(userId: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiServerUrl}/api/user/${userId}`);
+    } 
 }
